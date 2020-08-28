@@ -66,6 +66,7 @@
                 <ul>
                     <li>Only wav file</li>
                     <li>It takes time varies by wav file time.</li>
+                    <li>If you insert music wav file (not only voice), Result will take a long time and so bad.</li>
                 </ul>
                 <hr class="solid">
 
@@ -187,12 +188,16 @@
                     function waiting(){
                         var spining = document.getElementById("loader");
                         spining.style.display = 'inline-block';
+                        var button = document.getElementById("submit"); 
+                        button.disabled = "disabled";
 
                     }
 
                     function stopWaiting(){
                         var spining = document.getElementById("loader");
                         spining.style.display = "none";
+                        var button = document.getElementById("submit"); 
+                        button.disabled = false;
                     }
 
                     document.getElementById("input_audio").onchange = (e) => {
