@@ -53,7 +53,8 @@ def stt():
     if requests_queue.qsize() > BATCH_SIZE: 
         return jsonify({'error': 'Too Many Requests'}), 429
 
-    file_name = str(uuid.uuid4()) + '.wav'
+    # file_name = str(uuid.uuid4()) + '.wav'
+    file_name = str(uuid.uuid4())
     audio = request.files['audio']
     audio.save(file_name)
     
@@ -71,9 +72,8 @@ def stt():
     if os.path.exists(file_name):
         os.remove(file_name)
 
-    if text == 500:
-        print("real 500")
-        return jsonify({'msg':'Server Error convert speech to text'}), 500
+    if 'msg' in text:
+        return jsonify(text), 500
 
     return jsonify({'msg': text}),200
 
@@ -82,7 +82,7 @@ def run(audio):
     try:
         text = speechToText(model, audio)
     except:
-        return 500
+        return {'msg':'Server Error : Converting speech to text.'}
 
     return text
 

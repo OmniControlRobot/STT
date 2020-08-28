@@ -11,7 +11,7 @@
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <!-- Project Title! -->
-        <title>Wave RNN TTS</title>    
+        <title>DeepSpeech STT</title>    
 
         <style>
             #loader {
@@ -61,9 +61,8 @@
                 <br>
                 <h3>Notice</h3>
                 <ul>
-                    <li>Only English</li>
-                    <li>No Special Mark</li>
-                    <li><b>One Sentence (Less than 200 characters)</b></li>
+                    <li>Only wav file</li>
+                    <li>Takes time varies by wav file time.</li>
                 </ul>
                 <hr class="solid">
 
@@ -72,7 +71,7 @@
                     <audio controls="controls" style="margin-bottom: 10px;">
                         <source id = "sample" src="../static/sample_audio.wav"></source>
                     </audio>
-                    <div > Many people learn programming using python and javascript.</div>
+                    <div> Result : experience proves this.</div>
                 </div>
                 <hr class="solid">
                 <!-- If your project have a input files -->
@@ -93,6 +92,7 @@
                         <div id = "statusWraaper"><p id='statusBox'></p></div>
                         <div id = "loader" style="display: none;"></div><br>
                     </div>
+                    <h4>Result</h3>
                     <p id="result"></p>
                 </div>
 
@@ -152,7 +152,7 @@
                         formData.append("audio",input_audio);
 
                         fetch(
-                            '/tts',
+                            '/stt',
                             {
                                 method: 'POST',
                                 body: formData,
@@ -164,7 +164,7 @@
                             }
                             else{
                                 response.json().then(response => {
-                                    loading.innerHTML = response['error'];
+                                    loading.innerHTML = response['msg'];
                                 })
                                 throw Error('error');
                             }

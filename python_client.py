@@ -25,9 +25,10 @@ def convert_samplerate(audio_path, desired_sample_rate):
 def speechToText(ds, input_audio):
 
     desired_sample_rate = ds.sampleRate()
-    print("not opend")
-    fin = wave.open(input_audio, 'rb')
-    print("opened!")
+    try:
+        fin = wave.open(input_audio, 'rb')
+    except:
+        return {'msg':'Please input wav file'}
     fs_orig = fin.getframerate()
 
     
