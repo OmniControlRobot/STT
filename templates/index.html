@@ -81,10 +81,10 @@
                 <h2>Let's try STT!</h2>
                 <div>
                     <label for="label1">Input audio: </label>
-                    <input type = 'file' id = 'input_audio' style="margin-right: 10px; margin-bottom: 10px;" onclick="PreviewAudio(this,$('#preview'))">
+                    <input type = 'file' id = 'input_audio' style="margin-right: 10px; margin-bottom: 10px;">
                     <button id = "submit" type='submit' class="btn btn-primary btn-lg" style="margin-left: auto;"> submit </button>
                     <br>
-                    <audio controls="controls">
+                    <audio controls="controls" id="previewBox"> 
                         <source id = "preview" style="display:none" src=""></source>
                     </audio>
                 </div>
@@ -195,17 +195,17 @@
                         spining.style.display = "none";
                     }
 
-                    docuiment.getElementById("input_audio").onclick = (e) => {
+                    document.getElementById("input_audio").onchange = (e) => {
                         var target = e.currentTarget;
                         var file = target.files[0];
-                        var reader = new FileReader();
                         var previewAudio = document.getElementById("preview");
-                        
-                        if (target.files && file) {
+                        var previewBox = document.getElementById("previewBox");
+                  
+                        if (file) {
                                 var reader = new FileReader();
                                 reader.onload = function (e) {
                                     previewAudio.src = e.target.result;
-                                    previewAudio.play();
+                                    previewBox.load();
                                 }
                                 reader.readAsDataURL(file);
                             }
