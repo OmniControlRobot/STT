@@ -1,6 +1,9 @@
-[![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/woomurf/STT)]
+.. image:: https://ainize.ai/images/run_on_ainize_button.svg 
+   :target: https://ainize.web.app/redirect?git_repo=https://github.com/woomurf/STT
+   :alt: Run on Ainize
 
-[Demo](https://master-stt-woomurf.endpoint.ainize.ai/) 
+
+`Demo <https://master-stt-woomurf.endpoint.ainize.ai/>`_
 
 ---
 
