@@ -91,4 +91,6 @@ def healthcheck():
     return "ok", 200
 
 if __name__ =="__main__":
-    app.run(host='0.0.0.0', port=80, threaded=True)
+    from waitress import serve
+    serve(app, port=80, host='0.0.0.0')
+    # app.run(host='0.0.0.0', port=80, threaded=True)
