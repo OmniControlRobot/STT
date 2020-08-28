@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+   title: DeepSpeech
+   description: |
+    DeepSpeech is project that convert wav file to text. It works only on english.
+    
+    [Original Repo](https://github.com/mozilla/DeepSpeech) [Github Repo](https://github.com/woomurf/STT) [Demo](https://master-stt-woomurf.endpoint.ainize.ai/)
+    
+   version: 0.8.2
+   license:
+      name: MPL-2.0
+      
+servers:
+   - url: https://master-stt-woomurf.endpoint.ainize.ai/
+
+paths:
+   /stt:
+      post:
+        requestBody:
+          required: true
+          description: | 
+           <audio controls="controls" id="previewBox"> 
+                        <source id = "preview" src="https://raw.githubusercontent.com/woomurf/STT/master/static/sample1.wav"></source>
+                    </audio>
+          content:
+               multipart/form-data:
+                  schema:
+                     type: object
+                     properties:
+                        audio:
+                           type: string
+                           format: binary
+                     required:
+                        - audio 
+        responses:
+            '200':
+               description: success
+               content:
+                  application/json:
+                     schema:
+                        type: string
+            '400':
+               description: Bad request
+            '429':
+               description: busy to server, please retry again.
+            '500':
+               description: Server Side Error
