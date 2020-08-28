@@ -80,7 +80,6 @@ def stt():
 def run(audio):
 
     try:
-        model = ds.Model(MODEL)
         text = speechToText(model, audio)
     except:
         return {'msg':'Server Error : Converting speech to text.'}
