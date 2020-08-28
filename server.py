@@ -51,7 +51,7 @@ def index():
 def stt():
 
     if requests_queue.qsize() > BATCH_SIZE: 
-        return jsonify({'error': 'Too Many Requests'}), 429
+        return jsonify({'msg': 'Too Many Requests'}), 429
 
     # file_name = str(uuid.uuid4()) + '.wav'
     file_name = str(uuid.uuid4())
@@ -91,4 +91,4 @@ def healthcheck():
     return "ok", 200
 
 if __name__ =="__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, threaded=True)
