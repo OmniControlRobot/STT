@@ -5,7 +5,6 @@
 
 `Demo <https://master-stt-woomurf.endpoint.ainize.ai/>`_
 
-=================
 
 Mozilla Voice STT
 =================
