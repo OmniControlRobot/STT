@@ -53,11 +53,11 @@
         <div class = "container">
             <div class="jumbotron mt-3">
                  <!-- Proejct Title -->
-                <h1>Wave RNN - Text2Speech</h1>
+                <h1>DeepSpeech - STT</h1>
                 <!-- Github link and Ainize link -->
-                <A>Git Hub repository : </A> <A href="https://github.com/woomurf/WaveRNN" target="blank">https://github.com/woomurf/WaveRNN</A>
+                <A>Git Hub repository : </A> <A href="https://github.com/woomurf/STT" target="blank">https://github.com/woomurf/STT</A>
                 <br>
-                <A>Testing API : </A> <A href="https://ainize.ai/woomurf/WaveRNN" target="blank"> on Ainize </A><br>
+                <A>Testing API : </A> <A href="" target="blank"> on Ainize </A><br>
                 <br>
                 <h3>Notice</h3>
                 <ul>
@@ -66,25 +66,25 @@
                     <li><b>One Sentence (Less than 200 characters)</b></li>
                 </ul>
                 <hr class="solid">
-                
-                <!-- If your project have a input files -->
-                <h2>Testing TTS </h2>
+
                 <div id="sampleBox" style="margin-bottom:10px">
-                    <div ><b>Example:</b> Many people learn programming using python and javascript.</div>
-                    <audio controls="controls">
+                    <h3>Example</h3>
+                    <audio controls="controls" style="margin-bottom: 10px;">
                         <source id = "sample" src="../static/sample_audio.wav"></source>
-                </audio>
+                    </audio>
+                    <div > Many people learn programming using python and javascript.</div>
                 </div>
+                <hr class="solid">
+                <!-- If your project have a input files -->
+                <h2>Let's try STT!</h2>
                 <div id = 'inputImage'>
-                    <label for="label1">Input Text: </label>
-                    <input type = 'text' id = 'input_text' style="margin-right: 10px; margin-bottom: 10px;">
-                    <br>
-                    <input type = "radio" name = 'batched' checked = 'checked' style="margin-right: 10px; margin-bottom: 10px;">
-                    <label for="label2">Batched ( low quality / short time )</label><br>
-                    <input type = "radio" name = 'batched' style="margin-right: 10px; margin-bottom: 10px;">
-                    <label for="label2">UnBatched ( high quality /super long long long long time )</label><br>
-                    
+                    <label for="label1">Input audio: </label>
+                    <input type = 'file' id = 'input_audio' style="margin-right: 10px; margin-bottom: 10px;">
                     <button id = "submit" type='submit' class="btn btn-primary btn-lg" style="margin-left: auto;"> submit </button>
+                    <br>
+                    <audio controls="controls">
+                        <source id = "preview" src=""></source>
+                    </audio>
                 </div>
                 
                 <!-- Result Box -->
@@ -93,9 +93,7 @@
                         <div id = "statusWraaper"><p id='statusBox'></p></div>
                         <div id = "loader" style="display: none;"></div><br>
                     </div>
-                    <audio id = "audioBox" controls="controls">
-                        <source id = "result" src=""></source>
-                    </audio>
+                    <p id="result"></p>
                 </div>
 
                 <div id="badge" OnClick="location.href='https://join.slack.com/t/ainetwork-dev/shared_invite/zt-c89mb8z9-IqaCsNmsNLXKNylKXrJTTg'"
@@ -146,21 +144,12 @@
                         loading.innerHTML = "Loading..."
                         waiting();
                         
-                        var audioSource = document.getElementById("result")
-                        audioSource.src = "";
+                        var result = document.getElementById("result");
                         
                         var formData = new FormData();
-                        var input_text = document.getElementById("input_text").value
-                        var radios = document.getElementsByName("batched")
-                        var batched = true
-
-                        if (radios[1].checked){
-                            batched = false
-                        }
+                        var input_audio = document.getElementById("input_audio").files[0]
                         
-                        formData.append("batched", batched)
-                        formData.append("input_text",input_text)
-                        var status; 
+                        formData.append("audio",input_audio);
 
                         fetch(
                             '/tts',
@@ -180,17 +169,12 @@
                                 throw Error('error');
                             }
                         })
-                        .then(response => response.blob())
-                        .then(blob => URL.createObjectURL(blob))
-                        .then(audioURL => {
-                            audioSource.src = audioURL;
+                        .then(response => response.json())
+                        .then(response => {
+                            result.innerHTML = response['msg'];
                             
                             loading.innerHTML = "Done!"
                             stopWaiting();
-
-                            var audio = document.getElementById("audioBox")
-                            audio.load()
-                            audio.play()
                         })
                         .catch(error => {
                             stopWaiting();
