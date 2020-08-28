@@ -1,0 +1,4 @@
+deepspeech==0.8.2
+numpy
+flask
+librosa
