@@ -8,9 +8,9 @@ You can test on open api or web site demo.
 Mozilla Voice STT
 ---
 
-[![Documentation](https://readthedocs.org/projects/deepspeech/badge/?version=latest)](http://mozilla-voice-stt.readthedocs.io/?badge=latest)
+[![Documentation](https://readthedocs.org/projects/deepspeech/badge/?version=latest)](http://mozilla-voice-stt.readthedocs.io/?badge=latest) [![Task Status](https://community-tc.services.mozilla.com/api/github/v1/repository/mozilla/STT/master/badge.svg)](https://community-tc.services.mozilla.com/api/github/v1/repository/mozilla/STT/master/latest) 
 
-[![Task Status](https://community-tc.services.mozilla.com/api/github/v1/repository/mozilla/STT/master/badge.svg)](https://community-tc.services.mozilla.com/api/github/v1/repository/mozilla/STT/master/latest) Mozilla Voice STT is an open source Speech-To-Text engine, using a model trained by machine learning techniques based on [Baidu's Deep Speech research paper](https://arxiv.org/abs/1412.5567). 
+Mozilla Voice STT is an open source Speech-To-Text engine, using a model trained by machine learning techniques based on [Baidu's Deep Speech research paper](https://arxiv.org/abs/1412.5567). 
 
 Mozilla Voice STT uses Google's [TensorFlow](https://www.tensorflow.org/) to make the implementation easier.
 
