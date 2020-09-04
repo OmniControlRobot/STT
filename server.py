@@ -53,10 +53,13 @@ def stt():
     if requests_queue.qsize() > BATCH_SIZE: 
         return jsonify({'msg': 'Too Many Requests'}), 429
 
-    # file_name = str(uuid.uuid4()) + '.wav'
     file_name = str(uuid.uuid4())
     audio = request.files['audio']
+    if audio.content_type != 'audio/wav':
+        return jsonify({'msg': 'Invalid file. Please input wav file.'}), 400
+
     audio.save(file_name)
+
     
     req = {
         'input': [file_name]
