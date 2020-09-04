@@ -1,4 +1,4 @@
-FROM hyeonwoong/stt-base 
+FROM hyeonwoong/stt-base-model
 
 WORKDIR /app
 
