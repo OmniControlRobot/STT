@@ -2,7 +2,9 @@ openapi: 3.0.0
 info:
    title: DeepSpeech
    description: |
-    DeepSpeech is project that convert wav file to text. It works only on english.
+    DeepSpeech is an open source Speech-To-Text engine, using a model trained by machine learning techniques based on [Baidu's Deep Speech research paper.](https://arxiv.org/abs/1412.5567)
+    
+    Speech-To-Text means that convert wav file to text. It works only with english.
     
     [Original Repo](https://github.com/mozilla/DeepSpeech) [Github Repo](https://github.com/woomurf/STT) [Demo](https://master-stt-woomurf.endpoint.ainize.ai/)
     
@@ -22,6 +24,7 @@ paths:
            <audio controls="controls" id="previewBox"> 
                         <source id = "preview" src="https://raw.githubusercontent.com/woomurf/STT/master/static/sample1.wav"></source>
                     </audio>
+            <- click more and download sample audio!
           content:
                multipart/form-data:
                   schema:
@@ -38,7 +41,7 @@ paths:
                content:
                   application/json:
                      schema:
-                        type: string
+                        type: object
             '400':
                description: Bad request
             '429':
