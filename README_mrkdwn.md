@@ -16,7 +16,7 @@ Mozilla Voice STT uses Google's [TensorFlow](https://www.tensorflow.org/) to mak
 
 Documentation for installation, usage, and training models are available on [mozilla-voice-stt.readthedocs.io](http://mozilla-voice-stt.readthedocs.io/?badge=latest>).
 
-For the latest release, including pre-trained models and checkpoints, [see the latest release on GitHub](https://github.com/mozilla/DeepSpeech/releases/latest>).
+For the latest release, including pre-trained models and checkpoints, [see the latest release on GitHub](https://github.com/mozilla/DeepSpeech/releases/latest).
 
 For contribution guidelines, see [CONTRIBUTING.rst](https://github.com/mozilla/DeepSpeech/blob/master/CONTRIBUTING.rst).
 
