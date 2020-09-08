@@ -24,6 +24,7 @@ print("Scorer loaded : {}s".format(time.time()-start_scorer))
 ##############################################################################
 
 app = Flask(__name__, template_folder='./templates/')
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024 # 5MB
 
 requests_queue = Queue()
 BATCH_SIZE = 1
@@ -92,6 +93,10 @@ def run(audio):
 @app.route("/healthz", methods=["GET"])
 def healthcheck():
     return "ok", 200
+
+@app.errorhandler(413)
+def error413(e):
+    return jsonify({'msg':'Invalid file size.'}), 413
 
 if __name__ =="__main__":
     from waitress import serve
