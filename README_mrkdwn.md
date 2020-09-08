@@ -21,3 +21,11 @@ For the latest release, including pre-trained models and checkpoints, [see the l
 For contribution guidelines, see [CONTRIBUTING.rst](https://github.com/mozilla/DeepSpeech/blob/master/CONTRIBUTING.rst).
 
 For contact and support information, see [SUPPORT.rst](https://github.com/mozilla/DeepSpeech/blob/master/SUPPORT.rst).
+
+### Docker build & Run
+
+You can try running STT API server using docker. 
+
+`docker build -t stt . `
+
+`docker run ${HostPort}:80 --gpus all stt` 

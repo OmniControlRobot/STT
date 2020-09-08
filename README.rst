@@ -29,3 +29,17 @@ For the latest release, including pre-trained models and checkpoints, `see the l
 For contribution guidelines, see `CONTRIBUTING.rst <CONTRIBUTING.rst>`_.
 
 For contact and support information, see `SUPPORT.rst <SUPPORT.rst>`_.
+
+
+Docker build and Run 
+--------------------
+
+You can try running STT API server using docker. 
+
+.. code::
+
+   docker build -t stt .
+
+.. code::
+
+   docker run -p ${HostPort}:80 --gpus all stt 
