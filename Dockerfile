@@ -12,4 +12,6 @@ RUN apt-get install sox -y
 
 COPY . /app
 
+EXPOSE 80
+
 CMD ["python3", "server.py"]
