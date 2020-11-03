@@ -56,7 +56,8 @@ def stt():
 
     file_name = str(uuid.uuid4())
     audio = request.files['audio']
-    if audio.content_type != 'audio/wav':
+
+    if audio.filename[-4:] != ".wav":
         return jsonify({'msg': 'Invalid file. Please input wav file.'}), 400
 
     audio.save(file_name)
